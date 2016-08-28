@@ -2,9 +2,11 @@ package com.example.draldo.animations;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +29,16 @@ public class MainActivity extends AppCompatActivity {
         scaleAnim.start();
         ObjectAnimator fadeAnim = ObjectAnimator.ofFloat(mButton, "alpha", 0.2f);
         fadeAnim.start();
+        ObjectAnimator moveaAnim = ObjectAnimator.ofFloat(mButton, "Y", 1000);
+        moveaAnim.setDuration(2000);
+        moveaAnim.setInterpolator(new BounceInterpolator());
+        moveaAnim.start();
 
+    }
+
+    public void Animate(View view) {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
 }
